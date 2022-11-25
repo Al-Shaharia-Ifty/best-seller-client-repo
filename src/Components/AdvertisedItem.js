@@ -27,7 +27,7 @@ const AdvertisedItem = () => {
   const { data: products, isLoading } = useQuery({
     queryKey: ["product"],
     queryFn: () =>
-      fetch(`${process.env.REACT_APP_SERVER}/products`).then((res) =>
+      fetch(`https://seller-server.vercel.app/products`).then((res) =>
         res.json()
       ),
   });

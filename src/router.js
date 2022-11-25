@@ -20,16 +20,18 @@ const router = createBrowserRouter([
         path: "/category/:name",
         element: <CategoryProduct />,
         loader: ({ params }) =>
-          fetch(`${process.env.REACT_APP_SERVER}/category/${params.name}`),
+          fetch(`https://seller-server.vercel.app/category/${params.name}`),
       },
       {
         path: "/all-products",
         element: <AllProducts />,
-        loader: () => fetch(`${process.env.REACT_APP_SERVER}/products`),
+        loader: () => fetch(`https://seller-server.vercel.app/products`),
       },
       {
         path: "/product/:id",
         element: <ProductDetails />,
+        loader: ({ params }) =>
+          fetch(`https://seller-server.vercel.app/product/${params.id}`),
       },
       { path: "/login", element: <Login /> },
       { path: "/sign-up", element: <Signup /> },
