@@ -101,6 +101,30 @@ const Navbar = () => {
                   Home
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to={"/login"}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-red-500 bg-transparent font-semibold"
+                      : "text-black bg-transparent hover:text-red-500 duration-300 font-semibold"
+                  }
+                >
+                  Login
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/sign-up"}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-red-500 bg-transparent font-semibold"
+                      : "text-black bg-transparent hover:text-red-500 duration-300 font-semibold"
+                  }
+                >
+                  Sign Up
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>
