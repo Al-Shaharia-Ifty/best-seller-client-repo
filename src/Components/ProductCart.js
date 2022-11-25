@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import bluetik from "../Assets/Twitter_Verified_Badge.svg.png";
 
 const ProductCart = ({ p }) => {
@@ -40,7 +41,9 @@ const ProductCart = ({ p }) => {
           </div>
           <p>Brand Name: {brand}</p>
           <div className="card-actions justify-end pt-2">
-            <button className="btn btn-primary">Book Now</button>
+            <Link to={`../product/${_id}`}>
+              <button className="btn btn-primary">Book Now</button>
+            </Link>
           </div>
         </div>
       </div>
