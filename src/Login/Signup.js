@@ -9,15 +9,17 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../Shared/LoadingPage";
 import { useForm } from "react-hook-form";
 import useToken from "../hooks/useToken";
+import useType from "../hooks/useType";
 
 const Signup = () => {
-  const [option, setOption] = useState("Buyer");
+  const [role, setRole] = useState("Buyer");
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const [token] = useToken(user || googleUser);
+  const [done] = useType(role);
 
   //
   const navigate = useNavigate();
@@ -32,10 +34,10 @@ const Signup = () => {
 
   //
   useEffect(() => {
-    if (token) {
+    if (token && done) {
       navigate(from, { replace: true });
     }
-  }, [token, navigate, from]);
+  }, [token, navigate, from, done]);
 
   //
   if (loading || googleLoading || updating) {
@@ -51,11 +53,8 @@ const Signup = () => {
 
   //
   const onSubmit = async (data) => {
-    console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-    console.log("update done");
-    // navigate("/appointment");
   };
   return (
     <div>
@@ -92,14 +91,10 @@ const Signup = () => {
                   <span className="label-text">User Type</span>
                 </label>
                 <select
-                  onChange={(e) => setOption(e.target.value)}
+                  onChange={(e) => setRole(e.target.value)}
                   className="select select-bordered w-full max-w-xs"
                 >
-                  <option
-                    disabled
-                    defaultValue
-                    onChange={(e) => setOption(e.target.value)}
-                  >
+                  <option disabled defaultValue>
                     Buyer
                   </option>
                   <option>Buyer</option>

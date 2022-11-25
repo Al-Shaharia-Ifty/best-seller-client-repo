@@ -8,7 +8,6 @@ import { signOut } from "firebase/auth";
 const Navbar = () => {
   const [stickyClass, setStickyClass] = useState("relative");
   const [user] = useAuthState(auth);
-  console.log(user);
   useEffect(() => {
     window.addEventListener("scroll", stickNavbar);
 
