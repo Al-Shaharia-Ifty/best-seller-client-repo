@@ -27,12 +27,13 @@ const AdvertisedItem = () => {
   const { data: products, isLoading } = useQuery({
     queryKey: ["product"],
     queryFn: () =>
-      fetch(`${process.env.REACT_APP_URL}/products`).then((res) => res.json()),
+      fetch(`${process.env.REACT_APP_SERVER}/products`).then((res) =>
+        res.json()
+      ),
   });
   if (isLoading) {
     return <Loading />;
   }
-  console.log(products);
   return (
     <div>
       <h2 className="text-3xl text-center my-10">Advertised Section</h2>
@@ -40,7 +41,7 @@ const AdvertisedItem = () => {
         <Carousel
           infinite={true}
           autoPlay={true}
-          autoPlaySpeed={3000}
+          autoPlaySpeed={2000}
           responsive={responsive}
           className="mx-10 mt-16 text-center z-10"
         >
