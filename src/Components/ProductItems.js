@@ -7,7 +7,7 @@ import ProductCart from "./ProductCart";
 
 const ProductItems = () => {
   const { data: products, isLoading } = useQuery({
-    queryKey: ["product"],
+    queryKey: ["products"],
     queryFn: () =>
       fetch(`${process.env.REACT_APP_SERVER}/products`).then((res) =>
         res.json()
@@ -38,9 +38,12 @@ const ProductItems = () => {
         </div>
         <h2 className="text-3xl text-center my-8">Products</h2>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 my-8 gap-4 mx-10">
-          {products.slice(-6).map((p, i) => (
-            <ProductCart key={i} p={p} />
-          ))}
+          {products
+            .slice(-6)
+            .reverse()
+            .map((p, i) => (
+              <ProductCart key={i} p={p} />
+            ))}
         </div>
         <div className="text-center">
           <Link to={"../all-products"}>
