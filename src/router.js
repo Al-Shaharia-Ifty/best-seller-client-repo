@@ -24,6 +24,7 @@ const router = createBrowserRouter([
       {
         path: "/all-products",
         element: <AllProducts />,
+        loader: () => fetch(`${process.env.REACT_APP_SERVER}/products`),
       },
       { path: "/login", element: <Login /> },
       { path: "/sign-up", element: <Signup /> },

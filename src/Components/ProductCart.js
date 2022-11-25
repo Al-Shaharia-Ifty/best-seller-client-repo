@@ -40,7 +40,7 @@ const ProductCart = ({ p }) => {
           </div>
           <p>Brand Name: {brand}</p>
           <div className="card-actions justify-end pt-2">
-            <button className="btn btn-primary">Buy Now</button>
+            <button className="btn btn-primary">Book Now</button>
           </div>
         </div>
       </div>
