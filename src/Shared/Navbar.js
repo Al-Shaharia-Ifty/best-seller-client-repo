@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import PrimaryButton from "./PrimaryButton";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "./Firebase.init";
+import { signOut } from "firebase/auth";
 
 const Navbar = () => {
   const [stickyClass, setStickyClass] = useState("relative");
+  const [user] = useAuthState(auth);
+  console.log(user);
   useEffect(() => {
     window.addEventListener("scroll", stickNavbar);
 
@@ -19,9 +24,13 @@ const Navbar = () => {
         : setStickyClass("relative");
     }
   };
+  const logout = () => {
+    signOut(auth);
+    localStorage.removeItem("accessToken");
+  };
   return (
     <div>
-      <div className={`navbar bg-base-300 ${stickyClass}`}>
+      <div className={`navbar bg-base-300 z-50 ${stickyClass}`}>
         <div className="navbar-start">
           <Link
             to={"/"}
@@ -49,23 +58,36 @@ const Navbar = () => {
         <div className="navbar-end">
           <div className="lg:flex hidden">
             <ul className="menu menu-horizontal p-0 gap-2">
-              <li>
-                <NavLink
-                  to={"/login"}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-red-500 bg-transparent font-semibold"
-                      : "text-black bg-transparent hover:text-red-500 duration-300 font-semibold"
-                  }
-                >
-                  Login
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className="p-0 bg-transparent" to="/sign-up">
-                  <PrimaryButton>Sign Up</PrimaryButton>
-                </NavLink>
-              </li>
+              {user ? (
+                <li>
+                  <button
+                    onClick={logout}
+                    className="btn btn-outline btn-error rounded-lg"
+                  >
+                    Sign Out
+                  </button>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <NavLink
+                      to={"/login"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-red-500 bg-transparent font-semibold"
+                          : "text-black bg-transparent hover:text-red-500 duration-300 font-semibold"
+                      }
+                    >
+                      Login
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="p-0 bg-transparent" to="/sign-up">
+                      <PrimaryButton>Sign Up</PrimaryButton>
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <div className="dropdown dropdown-end">
@@ -101,30 +123,43 @@ const Navbar = () => {
                   Home
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to={"/login"}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-red-500 bg-transparent font-semibold"
-                      : "text-black bg-transparent hover:text-red-500 duration-300 font-semibold"
-                  }
-                >
-                  Login
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to={"/sign-up"}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-red-500 bg-transparent font-semibold"
-                      : "text-black bg-transparent hover:text-red-500 duration-300 font-semibold"
-                  }
-                >
-                  Sign Up
-                </NavLink>
-              </li>
+              {user ? (
+                <li>
+                  <button
+                    onClick={logout}
+                    className="btn btn-outline btn-error rounded-lg"
+                  >
+                    Sign Out
+                  </button>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <NavLink
+                      to={"/login"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-red-500 bg-transparent font-semibold"
+                          : "text-black bg-transparent hover:text-red-500 duration-300 font-semibold"
+                      }
+                    >
+                      Login
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to={"/sign-up"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-red-500 bg-transparent font-semibold"
+                          : "text-black bg-transparent hover:text-red-500 duration-300 font-semibold"
+                      }
+                    >
+                      Sign Up
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
