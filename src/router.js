@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import ProductDetails from "./Components/ProductDetails";
 import Main from "./Layout/Main";
 import Login from "./Login/Login";
 import Signup from "./Login/Signup";
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         path: "/all-products",
         element: <AllProducts />,
         loader: () => fetch(`${process.env.REACT_APP_SERVER}/products`),
+      },
+      {
+        path: "/product/:id",
+        element: <ProductDetails />,
       },
       { path: "/login", element: <Login /> },
       { path: "/sign-up", element: <Signup /> },
