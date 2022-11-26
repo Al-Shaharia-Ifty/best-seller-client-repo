@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import PrimaryButton from "./PrimaryButton";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./Firebase.init";
@@ -7,6 +7,7 @@ import { signOut } from "firebase/auth";
 
 const Navbar = () => {
   const [stickyClass, setStickyClass] = useState("relative");
+  const location = useLocation();
   const [user] = useAuthState(auth);
   useEffect(() => {
     window.addEventListener("scroll", stickNavbar);
@@ -18,7 +19,7 @@ const Navbar = () => {
   const stickNavbar = () => {
     if (window !== undefined) {
       let windowHeight = window.scrollY;
-      windowHeight > 0
+      windowHeight > 200
         ? setStickyClass("fixed top-0 left-0 z-50 ")
         : setStickyClass("relative");
     }
@@ -102,6 +103,28 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="dropdown dropdown-end">
+            {location.pathname.includes("/dashboard") && (
+              <label
+                htmlFor="dashboard-sidebar"
+                tabIndex="1"
+                className="btn btn-ghost lg:hidden"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </label>
+            )}
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
