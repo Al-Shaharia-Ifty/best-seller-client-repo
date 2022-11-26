@@ -8,7 +8,6 @@ const BookModal = ({ data, setOpenModal, user }) => {
   const { _id, img, name, resalePrice } = data;
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setOpenModal(false);
     const postOrder = {
       displayName,
       email,

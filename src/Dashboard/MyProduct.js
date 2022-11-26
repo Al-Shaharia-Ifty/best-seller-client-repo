@@ -2,6 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
+import SoldModal from "../Components/Modal/SoldModal";
 import auth from "../Shared/Firebase.init";
 import Loading from "../Shared/LoadingPage";
 
@@ -9,7 +10,11 @@ const MyProduct = () => {
   const [openModal, setOpenModal] = useState(false);
   const navigate = useNavigate();
   const url = `http://localhost:5000/my-product`;
-  const { data: products, isLoading } = useQuery({
+  const {
+    data: products,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["order"],
     queryFn: () =>
       fetch(url, {
@@ -19,7 +24,6 @@ const MyProduct = () => {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
       }).then((res) => {
-        console.log("res", res);
         if (res.status === 401 || res.status === 403) {
           signOut(auth);
           localStorage.removeItem("accessToken");
@@ -31,10 +35,7 @@ const MyProduct = () => {
   if (isLoading) {
     return <Loading />;
   }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("hello");
-  };
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -58,15 +59,19 @@ const MyProduct = () => {
                 </td>
                 <td>{o.name}</td>
                 <td>{o.resalePrice}</td>
-                {o?.paid ? (
-                  <td>
-                    <p className="text-green-600">Paid</p>
-                  </td>
+                {o?.status === "sold" ? (
+                  <td className="text-red-600">Not Available</td>
+                ) : o.advertised === true ? (
+                  <td className="text-green-600">Now Advertised</td>
                 ) : (
                   <td>
-                    <button onClick={handleSubmit} className="btn">
-                      pay
-                    </button>
+                    <label
+                      htmlFor="Advertised-modal"
+                      onClick={() => setOpenModal(o)}
+                      className="btn btn-outline"
+                    >
+                      Advertised
+                    </label>
                   </td>
                 )}
                 {o?.status === "sold" ? (
@@ -83,6 +88,13 @@ const MyProduct = () => {
           </tbody>
         </table>
       </div>
+      {openModal && (
+        <SoldModal
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+          refetch={refetch}
+        />
+      )}
     </div>
   );
 };
