@@ -52,6 +52,18 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to={"/dashboard"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-red-500 bg-transparent font-semibold"
+                    : "text-black bg-transparent hover:text-red-500 duration-300 font-semibold"
+                }
+              >
+                Dashboard
+              </NavLink>
+            </li>
           </ul>
         </div>
         <div className="navbar-end">

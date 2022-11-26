@@ -1,11 +1,47 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const BookModal = ({ data, setOpenModal, user }) => {
+  const navigate = useNavigate();
   const { displayName, email } = user;
-  const { _id, name, resalePrice } = data;
+  const { _id, img, name, resalePrice } = data;
   const handleSubmit = (e) => {
     e.preventDefault();
-    setOpenModal(false);
+    // setOpenModal(false);
+    const postOrder = { displayName, email, img, name, resalePrice };
+    const url = `http://localhost:5000/order`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(postOrder),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const update = {
+          status: "sold",
+          advertised: "false",
+        };
+        if (data.acknowledged === true) {
+          console.log("hello");
+          const url = `http://localhost:5000/update-product/${_id}`;
+          fetch(url, {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+              authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(update),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              navigate("../dashboard");
+            });
+        }
+      });
   };
   return (
     <div>
@@ -53,6 +89,7 @@ const BookModal = ({ data, setOpenModal, user }) => {
                 type="text"
                 placeholder="Address"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -63,6 +100,7 @@ const BookModal = ({ data, setOpenModal, user }) => {
                 type="text"
                 placeholder="Number"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
