@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const BookModal = ({ data, setOpenModal, user }) => {
   const navigate = useNavigate();
@@ -8,13 +9,19 @@ const BookModal = ({ data, setOpenModal, user }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // setOpenModal(false);
-    const postOrder = { displayName, email, img, name, resalePrice };
+    const postOrder = {
+      displayName,
+      email,
+      img,
+      name,
+      resalePrice,
+      paid: false,
+    };
     const url = `http://localhost:5000/order`;
     fetch(url, {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(postOrder),
     })
@@ -31,13 +38,13 @@ const BookModal = ({ data, setOpenModal, user }) => {
             method: "PUT",
             headers: {
               "content-type": "application/json",
-              authorization: `bearer ${localStorage.getItem("accessToken")}`,
             },
             body: JSON.stringify(update),
           })
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
+              Swal.fire("Book Successful", "", "success");
               navigate("../dashboard");
             });
         }

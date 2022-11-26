@@ -18,7 +18,7 @@ const Navbar = () => {
   const stickNavbar = () => {
     if (window !== undefined) {
       let windowHeight = window.scrollY;
-      windowHeight > 100
+      windowHeight > 0
         ? setStickyClass("fixed top-0 left-0 z-50 ")
         : setStickyClass("relative");
     }
@@ -132,6 +132,18 @@ const Navbar = () => {
                   }
                 >
                   Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/dashboard"}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-red-500 bg-transparent font-semibold"
+                      : "text-black bg-transparent hover:text-red-500 duration-300 font-semibold"
+                  }
+                >
+                  Dashboard
                 </NavLink>
               </li>
               {user ? (
