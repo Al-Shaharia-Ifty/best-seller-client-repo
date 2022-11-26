@@ -27,29 +27,31 @@ const AdvertisedItem = () => {
   const { data: products, isLoading } = useQuery({
     queryKey: ["product"],
     queryFn: () =>
-      fetch(`https://seller-server.vercel.app/products`).then((res) =>
-        res.json()
-      ),
+      fetch(`http://localhost:5000/advertised`).then((res) => res.json()),
   });
   if (isLoading) {
     return <Loading />;
   }
   return (
     <div>
-      <h2 className="text-3xl text-center my-10">Advertised Section</h2>
-      <div>
-        <Carousel
-          infinite={true}
-          autoPlay={true}
-          autoPlaySpeed={2000}
-          responsive={responsive}
-          className="mx-10 mt-16 text-center z-10"
-        >
-          {products.map((p, i) => (
-            <ProductCart key={i} p={p} />
-          ))}
-        </Carousel>
-      </div>
+      {products.length > 0 && (
+        <>
+          <h2 className="text-3xl text-center my-10">Advertised Section</h2>
+          <div>
+            <Carousel
+              infinite={true}
+              autoPlay={true}
+              autoPlaySpeed={2000}
+              responsive={responsive}
+              className="mx-10 mt-16 text-center z-10"
+            >
+              {products.map((p, i) => (
+                <ProductCart key={i} p={p} />
+              ))}
+            </Carousel>
+          </div>
+        </>
+      )}
     </div>
   );
 };

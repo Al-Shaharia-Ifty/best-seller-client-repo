@@ -2,8 +2,8 @@ import React from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import Loading from "../Shared/LoadingPage";
-import PrimaryButton from "../Shared/PrimaryButton";
-import ProductCart from "./ProductCart";
+// import PrimaryButton from "../Shared/PrimaryButton";
+// import ProductCart from "./ProductCart";
 
 const ProductItems = () => {
   const { data: products, isLoading } = useQuery({
@@ -36,6 +36,14 @@ const ProductItems = () => {
             </div>
           ))}
         </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductItems;
+/*
+
         <h2 className="text-3xl text-center my-8">Products</h2>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 my-8 gap-4 mx-10">
           {products
@@ -50,9 +58,4 @@ const ProductItems = () => {
             <PrimaryButton>See All products</PrimaryButton>
           </Link>
         </div>
-      </div>
-    </div>
-  );
-};
-
-export default ProductItems;
+*/

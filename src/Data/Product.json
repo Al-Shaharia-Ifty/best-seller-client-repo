@@ -9,7 +9,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "HP"
+    "brand": "HP",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/bQS04W0/hp-2.jpg",
@@ -21,7 +23,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "HP"
+    "brand": "HP",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/tDZmrXv/hp-3.jpg",
@@ -33,7 +37,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "HP"
+    "brand": "HP",
+    "status": "sold",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/fqrsyTw/hp-4.webp",
@@ -45,7 +51,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "HP"
+    "brand": "HP",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/WKBj9C5/dell-1.jpg",
@@ -57,7 +65,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "Dell"
+    "brand": "Dell",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/fvYCgB0/dell-2.jpg",
@@ -69,7 +79,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "Dell"
+    "brand": "Dell",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/sH3jJFH/dell-3.jpg",
@@ -81,7 +93,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "Dell"
+    "brand": "Dell",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/qDf78XM/dell-4.jpg",
@@ -93,7 +107,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "Dell"
+    "brand": "Dell",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/bgY9NY6/lenovo-1.jpg",
@@ -105,7 +121,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "Lenovo"
+    "brand": "Lenovo",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/H7FpZYp/lenovo-2.jpg",
@@ -117,7 +135,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "Lenovo"
+    "brand": "Lenovo",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/1LHcyfV/lenovo-3.jpg",
@@ -129,7 +149,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "Lenovo"
+    "brand": "Lenovo",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/gZBf9gW/lenovo-4.webp",
@@ -141,7 +163,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "Lenovo"
+    "brand": "Lenovo",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/QckHG5Q/asus-1.jpg",
@@ -153,7 +177,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "Asus"
+    "brand": "Asus",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/x2gY2S4/asus-2.webp",
@@ -165,7 +191,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "Asus"
+    "brand": "Asus",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/XssdqWM/asus-3.jpg",
@@ -177,7 +205,9 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "Asus"
+    "brand": "Asus",
+    "status": "available",
+    "advertised": "false"
   },
   {
     "img": "https://i.ibb.co/ZLmGL10/asus-4.webp",
@@ -189,6 +219,8 @@
     "time": "09:00 pm , 24/11/2022",
     "sellerName": "Al Shaharia",
     "verified": "true",
-    "brand": "Asus"
+    "brand": "Asus",
+    "status": "available",
+    "advertised": "false"
   }
 ]

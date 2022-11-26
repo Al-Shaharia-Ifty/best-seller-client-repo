@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import ProductDetails from "./Components/ProductDetails";
 import Main from "./Layout/Main";
+import RequireAuth from "./Layout/RequireAuth";
 import Login from "./Login/Login";
 import Signup from "./Login/Signup";
 import AllProducts from "./Pages/AllProducts";
@@ -18,7 +19,11 @@ const router = createBrowserRouter([
       { path: "/home", element: <Home /> },
       {
         path: "/category/:name",
-        element: <CategoryProduct />,
+        element: (
+          <RequireAuth>
+            <CategoryProduct />
+          </RequireAuth>
+        ),
         loader: ({ params }) =>
           fetch(`https://seller-server.vercel.app/category/${params.name}`),
       },
@@ -29,7 +34,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/product/:id",
-        element: <ProductDetails />,
+        element: (
+          <RequireAuth>
+            <ProductDetails />
+          </RequireAuth>
+        ),
         loader: ({ params }) =>
           fetch(`https://seller-server.vercel.app/product/${params.id}`),
       },

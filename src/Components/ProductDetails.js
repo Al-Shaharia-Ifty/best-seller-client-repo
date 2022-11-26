@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import bluetik from "../Assets/Twitter_Verified_Badge.svg.png";
-import PrimaryButton from "../Shared/PrimaryButton";
+import BookModal from "./Modal/BookModal";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../Shared/Firebase.init";
 
 const ProductDetails = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const [user] = useAuthState(auth);
   const data = useLoaderData();
   const {
-    _id,
     img,
     name,
     location,
@@ -41,16 +44,25 @@ const ProductDetails = () => {
                   {verified === "true" ? (
                     <img className="w-5 ml-2" src={bluetik} alt="" />
                   ) : (
-                    "not Verified"
+                    <p className="ml-2">"not Verified"</p>
                   )}
                 </span>
               </div>
               <p>Brand Name: {brand}</p>
             </div>
-            <PrimaryButton>Book now</PrimaryButton>
+            <label
+              htmlFor="book-modal"
+              onClick={() => setOpenModal(name)}
+              className="btn border-0 bg-gradient-to-l from-blue-900 to-purple-900"
+            >
+              Book Now
+            </label>
           </div>
         </div>
       </div>
+      {openModal && (
+        <BookModal data={data} setOpenModal={setOpenModal} user={user} />
+      )}
     </div>
   );
 };
