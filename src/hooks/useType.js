@@ -6,9 +6,10 @@ const useType = (role) => {
   const [done, setDone] = useState(null);
   const [user] = useAuthState(auth);
   const email = user?.email;
+  const name = user?.displayName;
   useEffect(() => {
-    const userType = { role: role, verified: "false" };
-    if (email) {
+    const userType = { role: role, verified: "false", displayName: name };
+    if (name) {
       const url = `http://localhost:5000/user/type/${email}`;
       fetch(url, {
         method: "PUT",
@@ -22,7 +23,7 @@ const useType = (role) => {
           setDone(data);
         });
     }
-  }, [email, role]);
+  }, [name, role, email]);
   return [done];
 };
 

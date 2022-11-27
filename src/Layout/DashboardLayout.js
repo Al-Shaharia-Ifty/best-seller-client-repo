@@ -2,6 +2,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
+import useBuyer from "../hooks/useBuyer";
 import useSeller from "../hooks/useSeller";
 import auth from "../Shared/Firebase.init";
 import Navbar from "../Shared/Navbar";
@@ -10,6 +11,7 @@ const DashboardLayout = () => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user?.email);
   const [seller] = useSeller(user?.email);
+  const [buyer] = useBuyer(user?.email);
   return (
     <div>
       <Navbar />
@@ -25,19 +27,21 @@ const DashboardLayout = () => {
         <div className="drawer-side ">
           <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-64 bg-base-100 text-base-content">
-            <li>
-              <Link to="/dashboard">My Order</Link>
-            </li>
+            {buyer && (
+              <li>
+                <Link to="/dashboard">My Order</Link>
+              </li>
+            )}
             {admin && (
               <>
                 <li>
-                  <Link to="/dashboard/admin/add-product">Add Product</Link>
+                  <Link to="/dashboard/all-sellers">All Sellers</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/admin/my-product">My Product</Link>
+                  <Link to="/dashboard/all-buyers">All Buyers</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/admin/report">Report</Link>
+                  <Link to="/dashboard/report">Report</Link>
                 </li>
               </>
             )}

@@ -15,6 +15,8 @@ import ErrorPage from "./Shared/ErrorPage";
 import Report from "./Dashboard/Report";
 import RequireSeller from "./Layout/RequireSeller";
 import RequireAdmin from "./Layout/RequireAdmin";
+import AllSeller from "./Dashboard/AllSeller";
+import AllBuyer from "./Dashboard/AllBuyer";
 
 const router = createBrowserRouter([
   {
@@ -62,10 +64,12 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
     children: [
+      // buyer
       {
         path: "/dashboard",
         element: <MyOrder />,
       },
+      // seller
       {
         path: "/dashboard/add-product",
         element: (
@@ -82,24 +86,26 @@ const router = createBrowserRouter([
           </RequireSeller>
         ),
       },
+      // admin
       {
-        path: "/dashboard/admin/add-product",
+        path: "/dashboard/all-sellers",
         element: (
           <RequireAdmin>
-            <AddProduct />
+            <AllSeller />
           </RequireAdmin>
         ),
       },
       {
-        path: "/dashboard/admin/my-product",
+        path: "/dashboard/all-buyers",
+        loader: () => fetch("http://localhost:5000/all-buyers"),
         element: (
           <RequireAdmin>
-            <MyProduct />
+            <AllBuyer />
           </RequireAdmin>
         ),
       },
       {
-        path: "/dashboard/admin/report",
+        path: "/dashboard/report",
         element: (
           <RequireAdmin>
             <Report />
