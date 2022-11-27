@@ -13,6 +13,8 @@ import MyProduct from "./Dashboard/MyProduct";
 import Home from "./Pages/Home";
 import ErrorPage from "./Shared/ErrorPage";
 import Report from "./Dashboard/Report";
+import RequireSeller from "./Layout/RequireSeller";
+import RequireAdmin from "./Layout/RequireAdmin";
 
 const router = createBrowserRouter([
   {
@@ -66,15 +68,43 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/add-product",
-        element: <AddProduct />,
+        element: (
+          <RequireSeller>
+            <AddProduct />
+          </RequireSeller>
+        ),
       },
       {
         path: "/dashboard/my-product",
-        element: <MyProduct />,
+        element: (
+          <RequireSeller>
+            <MyProduct />
+          </RequireSeller>
+        ),
       },
       {
-        path: "/dashboard/report",
-        element: <Report />,
+        path: "/dashboard/admin/add-product",
+        element: (
+          <RequireAdmin>
+            <AddProduct />
+          </RequireAdmin>
+        ),
+      },
+      {
+        path: "/dashboard/admin/my-product",
+        element: (
+          <RequireAdmin>
+            <MyProduct />
+          </RequireAdmin>
+        ),
+      },
+      {
+        path: "/dashboard/admin/report",
+        element: (
+          <RequireAdmin>
+            <Report />
+          </RequireAdmin>
+        ),
       },
     ],
   },

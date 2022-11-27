@@ -31,13 +31,13 @@ const DashboardLayout = () => {
             {admin && (
               <>
                 <li>
-                  <Link to="/dashboard/add-product">Add Product</Link>
+                  <Link to="/dashboard/admin/add-product">Add Product</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/my-product">My Product</Link>
+                  <Link to="/dashboard/admin/my-product">My Product</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/report">Report</Link>
+                  <Link to="/dashboard/admin/report">Report</Link>
                 </li>
               </>
             )}
