@@ -58,7 +58,7 @@ const Signup = () => {
   };
   return (
     <div>
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center min-h-screen">
         <div className="card w-96 bg-base-100 shadow-xl z-10">
           <div className="card-body">
             <h2 className="text-center text-3xl font-bold ">Sign UP</h2>
@@ -94,10 +94,7 @@ const Signup = () => {
                   onChange={(e) => setRole(e.target.value)}
                   className="select select-bordered w-full max-w-xs"
                 >
-                  <option disabled defaultValue>
-                    Buyer
-                  </option>
-                  <option>Buyer</option>
+                  <option defaultValue>Buyer</option>
                   <option>Seller</option>
                 </select>
               </div>

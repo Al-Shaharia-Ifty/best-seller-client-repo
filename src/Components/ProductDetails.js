@@ -19,6 +19,7 @@ const ProductDetails = () => {
     time,
     sellerName,
     verified,
+    condition,
     brand,
   } = data;
   return (
@@ -48,6 +49,7 @@ const ProductDetails = () => {
                   )}
                 </span>
               </div>
+              <p>Product Condition: {condition}</p>
               <p>Brand Name: {brand}</p>
             </div>
             <label

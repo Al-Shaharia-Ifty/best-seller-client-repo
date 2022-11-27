@@ -1,9 +1,9 @@
 import React from "react";
 import Swal from "sweetalert2";
 
-const SoldModal = ({ soldModal, setSoldModal, refetch }) => {
+const AvailableModal = ({ availableModal, setAvailableModal, refetch }) => {
   const handleSubmit = () => {
-    const url = `http://localhost:5000/sold/${soldModal._id}`;
+    const url = `http://localhost:5000/available/${availableModal._id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -13,25 +13,25 @@ const SoldModal = ({ soldModal, setSoldModal, refetch }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        Swal.fire("Product is now Sold", "", "success");
-        setSoldModal(false);
+        Swal.fire("Product is now available", "", "success");
+        setAvailableModal(false);
         refetch();
       });
   };
   return (
     <div>
-      <input type="checkbox" id="sold-modal" className="modal-toggle" />
+      <input type="checkbox" id="available-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">
-            Are you really Sold this product!
+            Are you really Available this product!
           </h3>
-          <p className="py-4">{soldModal.name}</p>
+          <p className="py-4">{availableModal.name}</p>
           <div className="modal-action">
             <button className="btn btn-primary" onClick={handleSubmit}>
-              Sold
+              Available
             </button>
-            <label htmlFor="sold-modal" className="btn">
+            <label htmlFor="available-modal" className="btn">
               cancel
             </label>
           </div>
@@ -41,4 +41,4 @@ const SoldModal = ({ soldModal, setSoldModal, refetch }) => {
   );
 };
 
-export default SoldModal;
+export default AvailableModal;

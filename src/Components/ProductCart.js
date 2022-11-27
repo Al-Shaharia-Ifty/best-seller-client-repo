@@ -14,6 +14,7 @@ const ProductCart = ({ p }) => {
     time,
     sellerName,
     verified,
+    condition,
     brand,
   } = p;
   return (
@@ -39,6 +40,7 @@ const ProductCart = ({ p }) => {
               )}
             </span>
           </div>
+          <p>Product Condition: {condition}</p>
           <p>Brand Name: {brand}</p>
           <div className="card-actions justify-end pt-2">
             <Link to={`../product/${_id}`}>

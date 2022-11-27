@@ -7,7 +7,7 @@ const useType = (role) => {
   const [user] = useAuthState(auth);
   const email = user?.email;
   useEffect(() => {
-    const userType = { role: role, verified: false };
+    const userType = { role: role, verified: "false" };
     if (email) {
       const url = `http://localhost:5000/user/type/${email}`;
       fetch(url, {

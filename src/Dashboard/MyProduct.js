@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import AdvertisedModal from "../Components/Modal/AdvertisedModal";
+import AvailableModal from "../Components/Modal/AvailableModal";
 import SoldModal from "../Components/Modal/SoldModal";
 import auth from "../Shared/Firebase.init";
 import Loading from "../Shared/LoadingPage";
@@ -10,6 +11,7 @@ import Loading from "../Shared/LoadingPage";
 const MyProduct = () => {
   const [openModal, setOpenModal] = useState(false);
   const [soldModal, setSoldModal] = useState(false);
+  const [availableModal, setAvailableModal] = useState(false);
   const navigate = useNavigate();
   const url = `http://localhost:5000/my-product`;
   const {
@@ -78,7 +80,13 @@ const MyProduct = () => {
                 )}
                 {o?.status === "sold" ? (
                   <td>
-                    <button className="btn btn-info">Available</button>
+                    <label
+                      htmlFor="available-modal"
+                      onClick={() => setAvailableModal(o)}
+                      className="btn btn-info"
+                    >
+                      Available
+                    </label>
                   </td>
                 ) : (
                   <td>
@@ -107,6 +115,13 @@ const MyProduct = () => {
         <SoldModal
           soldModal={soldModal}
           setSoldModal={setSoldModal}
+          refetch={refetch}
+        />
+      )}
+      {availableModal && (
+        <AvailableModal
+          setAvailableModal={setAvailableModal}
+          availableModal={availableModal}
           refetch={refetch}
         />
       )}

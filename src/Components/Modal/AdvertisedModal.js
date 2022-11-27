@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 
 const SoldModal = ({ openModal, setOpenModal, refetch }) => {
   const handleSubmit = () => {
@@ -12,7 +13,7 @@ const SoldModal = ({ openModal, setOpenModal, refetch }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        Swal.fire("Advertised Successful", "", "success");
         setOpenModal(false);
         refetch();
       });
