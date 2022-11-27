@@ -2,6 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { Navigate } from "react-router-dom";
+import DeleteUserModal from "../Components/Modal/DeleteUserModal";
 import VerifiedModal from "../Components/Modal/VerifiedModal";
 import auth from "../Shared/Firebase.init";
 import Loading from "../Shared/LoadingPage";
@@ -71,6 +72,7 @@ const AllSeller = () => {
                 )}
                 <td>
                   <label
+                    htmlFor="delete-modal"
                     onClick={() => setDeleteSeller(o)}
                     className="btn btn-error"
                   >
@@ -86,6 +88,13 @@ const AllSeller = () => {
         <VerifiedModal
           verifiedUser={verifiedUser}
           setVerifiedUser={setVerifiedUser}
+          refetch={refetch}
+        />
+      )}
+      {deleteSeller && (
+        <DeleteUserModal
+          deleteSeller={deleteSeller}
+          setDeleteSeller={setDeleteSeller}
           refetch={refetch}
         />
       )}

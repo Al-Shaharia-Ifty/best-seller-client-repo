@@ -1,8 +1,39 @@
-import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import React, { useState } from "react";
+import { useQuery } from "react-query";
+import { Navigate } from "react-router-dom";
+import DeleteUserModal from "../Components/Modal/DeleteUserModal";
+import auth from "../Shared/Firebase.init";
+import Loading from "../Shared/LoadingPage";
 
 const AllBuyer = () => {
-  const buyers = useLoaderData();
+  const url = "http://localhost:5000/all-buyers";
+  const {
+    data: buyers,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["orders"],
+    queryFn: () =>
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }).then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          Navigate("/");
+        }
+        return res.json();
+      }),
+  });
+  const [deleteSeller, setDeleteSeller] = useState(null);
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       <h2>All Buyer</h2>
@@ -11,9 +42,8 @@ const AllBuyer = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Image</th>
               <th>Name</th>
-              <th>Price</th>
+              <th>Email</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -21,27 +51,31 @@ const AllBuyer = () => {
             {buyers?.map((o, i) => (
               <tr key={i}>
                 <th>{i + 1}</th>
+
+                <td>{o.displayName}</td>
+                <td>{o.email}</td>
+
                 <td>
-                  <img className="w-20" src={o.img} alt="" />
+                  <label
+                    htmlFor="delete-modal"
+                    onClick={() => setDeleteSeller(o)}
+                    className="btn btn-error"
+                  >
+                    Delete
+                  </label>
                 </td>
-                <td>{o.name}</td>
-                <td>{o.resalePrice}</td>
-                {o?.paid ? (
-                  <td>
-                    <p className="text-green-600">Paid</p>
-                  </td>
-                ) : (
-                  <td>
-                    <button onClick={""} className="btn">
-                      pay
-                    </button>
-                  </td>
-                )}
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
+      </div>{" "}
+      {deleteSeller && (
+        <DeleteUserModal
+          deleteSeller={deleteSeller}
+          setDeleteSeller={setDeleteSeller}
+          refetch={refetch}
+        />
+      )}
     </div>
   );
 };
