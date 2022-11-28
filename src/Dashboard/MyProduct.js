@@ -13,7 +13,7 @@ const MyProduct = () => {
   const [soldModal, setSoldModal] = useState(false);
   const [availableModal, setAvailableModal] = useState(false);
   const navigate = useNavigate();
-  const url = `http://localhost:5000/my-product`;
+  const url = `https://seller-server.vercel.app/my-product`;
   const {
     data: products,
     isLoading,

@@ -10,7 +10,7 @@ const useType = (role) => {
   useEffect(() => {
     const userType = { role: role, verified: "false", displayName: name };
     if (name) {
-      const url = `http://localhost:5000/user/type/${email}`;
+      const url = `https://seller-server.vercel.app/user/type/${email}`;
       fetch(url, {
         method: "PUT",
         headers: {

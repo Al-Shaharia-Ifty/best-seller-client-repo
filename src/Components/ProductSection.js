@@ -8,7 +8,9 @@ const ProductSection = () => {
   const { data: products, isLoading } = useQuery({
     queryKey: ["products"],
     queryFn: () =>
-      fetch(`http://localhost:5000/products`).then((res) => res.json()),
+      fetch(`https://seller-server.vercel.app/products`).then((res) =>
+        res.json()
+      ),
   });
   if (isLoading) {
     return <Loading />;

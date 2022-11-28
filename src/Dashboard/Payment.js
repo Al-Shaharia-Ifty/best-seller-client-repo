@@ -13,7 +13,9 @@ const Payment = () => {
   const { data: product, isLoading } = useQuery({
     queryKey: ["product"],
     queryFn: () =>
-      fetch(`http://localhost:5000/booking/${id}`).then((res) => res.json()),
+      fetch(`https://seller-server.vercel.app/booking/${id}`).then((res) =>
+        res.json()
+      ),
   });
   if (isLoading) {
     return <Loading />;

@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 const SoldModal = ({ openModal, setOpenModal, refetch }) => {
   const handleSubmit = () => {
-    const url = `http://localhost:5000/advertised/${openModal._id}`;
+    const url = `https://seller-server.vercel.app/advertised/${openModal._id}`;
     fetch(url, {
       method: "PUT",
       headers: {

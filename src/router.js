@@ -35,12 +35,12 @@ const router = createBrowserRouter([
           </RequireAuth>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.name}`),
+          fetch(`https://seller-server.vercel.app/category/${params.name}`),
       },
       {
         path: "/all-products",
         element: <AllProducts />,
-        loader: () => fetch(`http://localhost:5000/products`),
+        loader: () => fetch(`https://seller-server.vercel.app/products`),
       },
       {
         path: "/product/:id",
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
           </RequireAuth>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/product/${params.id}`),
+          fetch(`https://seller-server.vercel.app/product/${params.id}`),
       },
       { path: "/login", element: <Login /> },
       { path: "/sign-up", element: <Signup /> },

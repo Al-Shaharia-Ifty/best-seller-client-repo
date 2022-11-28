@@ -18,7 +18,9 @@ const AddProduct = () => {
   const { data: user, isLoading } = useQuery({
     queryKey: ["product"],
     queryFn: () =>
-      fetch(`http://localhost:5000/user/${email}`).then((res) => res.json()),
+      fetch(`https://seller-server.vercel.app/user/${email}`).then((res) =>
+        res.json()
+      ),
   });
 
   const {
@@ -66,7 +68,7 @@ const AddProduct = () => {
             email: email,
           };
           console.log(product);
-          fetch(`http://localhost:5000/product`, {
+          fetch(`https://seller-server.vercel.app/product`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

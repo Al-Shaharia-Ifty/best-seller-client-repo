@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 const ReportModal = ({ reportModal, setReportModal }) => {
   const handleSubmit = () => {
-    const url = `http://localhost:5000/report/${reportModal._id}`;
+    const url = `https://seller-server.vercel.app/report/${reportModal._id}`;
     fetch(url, {
       method: "PUT",
       headers: {

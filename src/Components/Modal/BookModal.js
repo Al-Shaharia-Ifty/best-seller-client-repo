@@ -16,7 +16,7 @@ const BookModal = ({ data, setOpenModal, user }) => {
       resalePrice,
       paid: false,
     };
-    const url = `http://localhost:5000/order`;
+    const url = `https://seller-server.vercel.app/order`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -31,7 +31,7 @@ const BookModal = ({ data, setOpenModal, user }) => {
         const update = {};
         if (data.acknowledged === true) {
           console.log("hello");
-          const url = `http://localhost:5000/update-product/${_id}`;
+          const url = `https://seller-server.vercel.app/update-product/${_id}`;
           fetch(url, {
             method: "PUT",
             headers: {

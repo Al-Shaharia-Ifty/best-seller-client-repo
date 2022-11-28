@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 const VerifiedModal = ({ verifiedUser, setVerifiedUser, refetch }) => {
   const handleSubmit = () => {
-    const url = `http://localhost:5000/verified/${verifiedUser._id}`;
+    const url = `https://seller-server.vercel.app/verified/${verifiedUser._id}`;
     fetch(url, {
       method: "PUT",
       headers: {

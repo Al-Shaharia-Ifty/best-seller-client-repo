@@ -6,7 +6,7 @@ const useSeller = (email) => {
 
   useEffect(() => {
     if (email) {
-      fetch("http://localhost:5000/seller", {
+      fetch("https://seller-server.vercel.app/seller", {
         method: "GET",
         headers: {
           "content-type": "application/json",

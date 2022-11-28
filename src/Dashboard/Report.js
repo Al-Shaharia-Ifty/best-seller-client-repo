@@ -8,7 +8,7 @@ import Loading from "../Shared/LoadingPage";
 
 const Report = () => {
   const [soldModal, setSoldModal] = useState(false);
-  const url = "http://localhost:5000/all-report";
+  const url = "https://seller-server.vercel.app/all-report";
   const {
     data: reports,
     isLoading,

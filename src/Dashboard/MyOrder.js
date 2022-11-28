@@ -7,7 +7,7 @@ import Loading from "../Shared/LoadingPage";
 
 const MyOrder = () => {
   const navigate = useNavigate();
-  const url = `http://localhost:5000/order`;
+  const url = `https://seller-server.vercel.app/order`;
   const { data: orders, isLoading } = useQuery({
     queryKey: ["orders"],
     queryFn: () =>

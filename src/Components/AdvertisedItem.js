@@ -27,7 +27,9 @@ const AdvertisedItem = () => {
   const { data: products, isLoading } = useQuery({
     queryKey: ["product"],
     queryFn: () =>
-      fetch(`http://localhost:5000/advertised`).then((res) => res.json()),
+      fetch(`https://seller-server.vercel.app/advertised`).then((res) =>
+        res.json()
+      ),
   });
   if (isLoading) {
     return <Loading />;

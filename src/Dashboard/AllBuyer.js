@@ -7,7 +7,7 @@ import auth from "../Shared/Firebase.init";
 import Loading from "../Shared/LoadingPage";
 
 const AllBuyer = () => {
-  const url = "http://localhost:5000/all-buyers";
+  const url = "https://seller-server.vercel.app/all-buyers";
   const {
     data: buyers,
     isLoading,

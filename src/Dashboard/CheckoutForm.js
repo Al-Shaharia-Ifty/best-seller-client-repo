@@ -16,7 +16,7 @@ const CheckoutForm = ({ appointment }) => {
   const { _id, displayName, name, resalePrice, email } = appointment;
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://seller-server.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -84,7 +84,7 @@ const CheckoutForm = ({ appointment }) => {
         productName: name,
         transactionId: paymentIntent.id,
       };
-      fetch(`http://localhost:5000/order/${_id}`, {
+      fetch(`https://seller-server.vercel.app/order/${_id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

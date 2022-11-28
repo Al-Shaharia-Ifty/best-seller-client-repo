@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 const DeleteUserModal = ({ deleteSeller, setDeleteSeller, refetch }) => {
   const handleSubmit = () => {
-    const url = `http://localhost:5000/delete-user/${deleteSeller._id}`;
+    const url = `https://seller-server.vercel.app/delete-user/${deleteSeller._id}`;
     fetch(url, {
       method: "DELETE",
       headers: {
