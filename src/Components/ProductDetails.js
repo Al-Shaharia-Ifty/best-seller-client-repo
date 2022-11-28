@@ -52,7 +52,7 @@ const ProductDetails = () => {
                   {verified === "true" ? (
                     <img className="w-5 ml-2" src={bluetik} alt="" />
                   ) : (
-                    <p className="ml-2">"not Verified"</p>
+                    <p className="ml-2 text-red-500">"not Verified"</p>
                   )}
                 </span>
               </div>

@@ -13,7 +13,7 @@ const DeleteUserModal = ({ deleteSeller, setDeleteSeller, refetch }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        Swal.fire("User is now verified", "", "success");
+        Swal.fire("Delete User SuccessFull", "", "success");
         setDeleteSeller(false);
         refetch();
       });

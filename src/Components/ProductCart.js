@@ -36,7 +36,7 @@ const ProductCart = ({ p }) => {
               {verified === "true" ? (
                 <img className="w-5 ml-2" src={bluetik} alt="" />
               ) : (
-                "not Verified"
+                <p className="text-red-500 ml-2">Not Verified</p>
               )}
             </span>
           </div>

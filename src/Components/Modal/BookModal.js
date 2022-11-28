@@ -26,10 +26,9 @@ const BookModal = ({ data, setOpenModal, user }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        const update = {
-          status: "sold",
-          advertised: "false",
-        };
+        Swal.fire("Book Successful", "", "success");
+        navigate("../dashboard");
+        const update = {};
         if (data.acknowledged === true) {
           console.log("hello");
           const url = `http://localhost:5000/update-product/${_id}`;
@@ -43,8 +42,6 @@ const BookModal = ({ data, setOpenModal, user }) => {
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
-              Swal.fire("Book Successful", "", "success");
-              navigate("../dashboard");
             });
         }
       });
