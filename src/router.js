@@ -18,6 +18,7 @@ import RequireAdmin from "./Layout/RequireAdmin";
 import AllSeller from "./Dashboard/AllSeller";
 import AllBuyer from "./Dashboard/AllBuyer";
 import Payment from "./Dashboard/Payment";
+import Blog from "./Pages/Blog";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://seller-server.vercel.app/product/${params.id}`),
       },
+      { path: "/blog", element: <Blog /> },
       { path: "/login", element: <Login /> },
       { path: "/sign-up", element: <Signup /> },
     ],

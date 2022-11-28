@@ -65,6 +65,18 @@ const Navbar = () => {
                 Dashboard
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to={"/blog"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-red-500 bg-transparent font-semibold"
+                    : "text-black bg-transparent hover:text-red-500 duration-300 font-semibold"
+                }
+              >
+                Blog
+              </NavLink>
+            </li>
           </ul>
         </div>
         <div className="navbar-end">
@@ -167,6 +179,18 @@ const Navbar = () => {
                   }
                 >
                   Dashboard
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/blog"}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-red-500 bg-transparent font-semibold"
+                      : "text-black bg-transparent hover:text-red-500 duration-300 font-semibold"
+                  }
+                >
+                  Blog
                 </NavLink>
               </li>
               {user ? (
