@@ -1,22 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import Loading from "../Shared/LoadingPage";
 import ProductCart from "./ProductCart";
 
 const ProductSection = () => {
   const [products, setProducts] = useState(false);
-  // const { data: products, isLoading } = useQuery({
-  //   queryKey: ["products"],
-  //   queryFn: () =>
-  //     fetch(`https://seller-server.vercel.app/products`).then((res) =>
-  //       res.json()
-  //     ),
-  // });
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
   axios.get(`https://seller-server.vercel.app/products`).then((data) => {
     setProducts(data.data);
   });
