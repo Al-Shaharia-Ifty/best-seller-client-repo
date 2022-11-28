@@ -97,7 +97,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/all-buyers",
-        loader: () => fetch("http://localhost:5000/all-buyers"),
         element: (
           <RequireAdmin>
             <AllBuyer />

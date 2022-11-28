@@ -5,6 +5,7 @@ import BookModal from "./Modal/BookModal";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../Shared/Firebase.init";
 import ReportModal from "./Modal/ReportModal";
+import Loading from "../Shared/LoadingPage";
 
 const ProductDetails = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -25,6 +26,9 @@ const ProductDetails = () => {
     brand,
     report,
   } = data;
+  if (!data) {
+    return <Loading />;
+  }
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">

@@ -1,9 +1,13 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ProductCart from "../Components/ProductCart";
+import Loading from "../Shared/LoadingPage";
 
 const AllProducts = () => {
   const data = useLoaderData();
+  if (!data) {
+    return <Loading />;
+  }
   return (
     <div>
       <h2 className="text-3xl text-center my-5">All Laptop are Here</h2>

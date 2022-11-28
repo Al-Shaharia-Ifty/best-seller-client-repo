@@ -1,10 +1,13 @@
-import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import ProductCart from "../Components/ProductCart";
+import Loading from "../Shared/LoadingPage";
 
 const CategoryProduct = () => {
   const category = useParams();
   const data = useLoaderData();
+  if (!data) {
+    return <Loading />;
+  }
   return (
     <div>
       <h2 className="text-3xl text-center my-10">

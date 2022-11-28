@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useToken from "../hooks/useToken";
 import { useForm } from "react-hook-form";
 import Loading from "../Shared/LoadingPage";
 import auth from "../Shared/Firebase.init";
-import {
-  useSignInWithEmailAndPassword,
-  useSignInWithGoogle,
-} from "react-firebase-hooks/auth";
-import useType from "../hooks/useType";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 const Login = () => {
-  const [role] = useState("Buyer");
-  const [signInWithGoogle, googleUser, googleLoading, googleError] =
-    useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const navigate = useNavigate();
   let location = useLocation();
-  const [token] = useToken(googleUser || user);
-  const [done] = useType(role);
+  const [token] = useToken(user);
 
   let from = location.state?.from?.pathname || "/";
   let signInErrorMessage;
@@ -31,20 +23,16 @@ const Login = () => {
   } = useForm();
 
   useEffect(() => {
-    if (token && done) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [token, navigate, from, done]);
+  }, [token, navigate, from]);
 
-  if (loading || googleLoading) {
+  if (loading) {
     return <Loading />;
   }
-  if (error || googleError) {
-    signInErrorMessage = (
-      <p className="text-red-500 mb-2">
-        {error?.message || googleError?.message}
-      </p>
-    );
+  if (error) {
+    signInErrorMessage = <p className="text-red-500 mb-2">{error?.message}</p>;
   }
   const handleLogin = (data) => {
     signInWithEmailAndPassword(data.email, data.password);
@@ -53,7 +41,7 @@ const Login = () => {
     <div>
       <div className="hero min-h-screen bg-base-200">
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form onSubmit={handleSubmit(handleLogin)} className="card-body pb-0">
+          <form onSubmit={handleSubmit(handleLogin)} className="card-body ">
             <h2 className="text-4xl text-center">Login</h2>
             <div className="form-control">
               <label className="label">
@@ -99,15 +87,6 @@ const Login = () => {
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
-          <div className="card-body pt-0">
-            <div className="divider">OR</div>
-            <button
-              onClick={() => signInWithGoogle()}
-              className="btn btn-outline w-full"
-            >
-              Continue with google
-            </button>
-          </div>
         </div>
       </div>
     </div>
