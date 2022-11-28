@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../Shared/Firebase.init";
 import Loading from "../Shared/LoadingPage";
 
@@ -29,10 +29,6 @@ const MyOrder = () => {
   if (isLoading) {
     return <Loading />;
   }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("hello");
-  };
   return (
     <div>
       <div className="">
@@ -63,9 +59,9 @@ const MyOrder = () => {
                     </td>
                   ) : (
                     <td>
-                      <button onClick={handleSubmit} className="btn">
-                        pay
-                      </button>
+                      <Link to={`/dashboard/payment/${o._id}`}>
+                        <button className="btn btn-sm">pay</button>
+                      </Link>
                     </td>
                   )}
                 </tr>

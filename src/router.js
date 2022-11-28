@@ -17,6 +17,7 @@ import RequireSeller from "./Layout/RequireSeller";
 import RequireAdmin from "./Layout/RequireAdmin";
 import AllSeller from "./Dashboard/AllSeller";
 import AllBuyer from "./Dashboard/AllBuyer";
+import Payment from "./Dashboard/Payment";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <MyOrder />,
+      },
+      {
+        path: "/dashboard/payment/:id",
+        element: <Payment />,
       },
       // seller
       {
