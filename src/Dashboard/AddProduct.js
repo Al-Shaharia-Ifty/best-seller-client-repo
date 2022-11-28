@@ -61,6 +61,7 @@ const AddProduct = () => {
             brand: brand,
             status: "available",
             advertised: false,
+            report: false,
             condition: type,
             email: email,
           };

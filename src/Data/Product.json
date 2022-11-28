@@ -12,6 +12,7 @@
     "brand": "HP",
     "status": "available",
     "advertised": true,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -28,6 +29,7 @@
     "brand": "HP",
     "status": "available",
     "advertised": false,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -44,6 +46,7 @@
     "brand": "HP",
     "status": "sold",
     "advertised": false,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -60,6 +63,7 @@
     "brand": "HP",
     "status": "available",
     "advertised": false,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -76,6 +80,7 @@
     "brand": "Dell",
     "status": "available",
     "advertised": true,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -92,6 +97,7 @@
     "brand": "Dell",
     "status": "available",
     "advertised": false,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -108,6 +114,7 @@
     "brand": "Dell",
     "status": "available",
     "advertised": false,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -124,6 +131,7 @@
     "brand": "Dell",
     "status": "available",
     "advertised": false,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -140,6 +148,7 @@
     "brand": "Lenovo",
     "status": "available",
     "advertised": true,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -156,6 +165,7 @@
     "brand": "Lenovo",
     "status": "available",
     "advertised": false,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -172,6 +182,7 @@
     "brand": "Lenovo",
     "status": "available",
     "advertised": false,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -188,6 +199,7 @@
     "brand": "Lenovo",
     "status": "available",
     "advertised": false,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -204,6 +216,7 @@
     "brand": "Asus",
     "status": "available",
     "advertised": true,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -220,6 +233,7 @@
     "brand": "Asus",
     "status": "available",
     "advertised": false,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -236,6 +250,7 @@
     "brand": "Asus",
     "status": "available",
     "advertised": false,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   },
@@ -252,6 +267,7 @@
     "brand": "Asus",
     "status": "available",
     "advertised": false,
+    "report": false,
     "condition": "Good",
     "email": "ifty682002@gmail.com"
   }

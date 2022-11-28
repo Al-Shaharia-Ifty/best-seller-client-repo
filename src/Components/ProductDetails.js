@@ -4,9 +4,11 @@ import bluetik from "../Assets/Twitter_Verified_Badge.svg.png";
 import BookModal from "./Modal/BookModal";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../Shared/Firebase.init";
+import ReportModal from "./Modal/ReportModal";
 
 const ProductDetails = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [reportModal, setReportModal] = useState(false);
   const [user] = useAuthState(auth);
   const data = useLoaderData();
   const {
@@ -21,6 +23,7 @@ const ProductDetails = () => {
     verified,
     condition,
     brand,
+    report,
   } = data;
   return (
     <div>
@@ -59,11 +62,26 @@ const ProductDetails = () => {
             >
               Book Now
             </label>
+            {report === false && (
+              <label
+                htmlFor="report-modal"
+                onClick={() => setReportModal(data)}
+                className="btn mx-5"
+              >
+                Report
+              </label>
+            )}
           </div>
         </div>
       </div>
       {openModal && (
         <BookModal data={data} setOpenModal={setOpenModal} user={user} />
+      )}
+      {reportModal && (
+        <ReportModal
+          reportModal={reportModal}
+          setReportModal={setReportModal}
+        />
       )}
     </div>
   );
